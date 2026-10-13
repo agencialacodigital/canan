@@ -1,0 +1,97 @@
+:root {
+  --ink: #333333;
+  --muted: #67645b;
+  --paper: #faf8f3;
+  --cream: #f0eade;
+  --line: #d9d0bc;
+  --orange: #b59548;
+  --brown: #333333;
+  --gold: #b59548;
+  --gold-deep: #80621f;
+}
+
+body { background: var(--paper); }
+.skip-link { position: absolute; left: 16px; top: -80px; z-index: 100; padding: 11px 16px; background: var(--ink); color: #fff; border-radius: 4px; }
+.skip-link:focus { top: 10px; }
+h1 em, h2 em { color: var(--gold-deep); }
+a:focus-visible, button:focus-visible, input:focus-visible,
+select:focus-visible, textarea:focus-visible { outline-color: var(--gold); }
+
+.site-header { height: 104px; background: #fffdfa; border-color: var(--line); }
+.header-inner { gap: 25px; }
+.brand { flex: 0 0 auto; letter-spacing: 0; }
+.brand img { width: 138px; height: auto; max-height: 78px; object-fit: contain; }
+.main-nav a:hover, .main-nav a[aria-current] { color: var(--gold-deep); }
+.header-cta { background: #e9dec3; color: var(--ink); }
+.header-cta:hover { background: #ddc990; }
+.menu-toggle span { background: var(--ink); }
+
+.eyebrow { color: var(--gold-deep); }
+.hero-stamp { background: #fffaf0; color: var(--ink); }
+.hero-stamp span { color: var(--gold-deep); }
+.button-dark { background: var(--ink); }
+.button-dark:hover { background: #55504a; }
+.button-ghost { background: #ede7d9; }
+.button-light { background: #f9f5e9; }
+.ticker { border-color: var(--line); background: #fffdfa; }
+.ticker-inner b { color: var(--gold); }
+
+.products-section { background: var(--paper); }
+.product-card { background: #fffdfa; }
+.product-card-photo { background: #e5ddcb; }
+.product-index { background: #fffaf0; }
+.round-arrow { border-color: var(--line); }
+.story-section { background: #f0eade; }
+.story-image span { background: #d9c184; color: var(--ink); }
+.made-section { background: var(--ink); color: #fffaf0; }
+.made-section .eyebrow { color: #d9bd72; }
+.made-section h2 em { color: #d9bd72; }
+.made-list, .made-list a { border-color: #68645d; }
+.made-list span { color: #d9c99f; }
+.inspiration-section { background: #fffdfa; }
+.about-band { background: #f0e8d8; }
+.about-monogram { background: #e5d5af; border-radius: 50% 50% 8px 8px; }
+.about-monogram img { width: 78%; height: auto; max-height: 80%; object-fit: contain; }
+.final-cta { background: var(--gold); }
+.final-cta h2 em { color: #fff8e8; }
+.final-cta .eyebrow { color: #403820; }
+.final-cta .cta-star { color: #d3b86f; }
+.final-cta p:not(.eyebrow) { color: #302b20; }
+
+.footer { background: var(--ink); color: #fffaf0; }
+.footer-brand { display: block; width: 245px; max-width: 100%; }
+.footer-brand img { width: 100%; height: auto; }
+.footer-top h2 { color: #d9bd72; }
+.footer-top p, .footer-bottom { color: #d8d1c3; }
+.footer-bottom { border-color: #69645b; }
+
+.editorial-block:nth-child(even) { background: #f1ecdf; }
+.editorial-count, .inner-intro-line { color: var(--gold-deep); }
+.faq-section { background: #eee8da; }
+.faq-item, .faq-item:first-child { border-color: #d0c5aa; }
+.inner-final { background: #e1ce98; }
+.subcat-links a { background: #efe6d0; }
+.subcat-links a:hover { background: #e6d7af; }
+.contact-intro-card { background: #e9ddbd; }
+.contact-intro-card span { color: var(--gold-deep); }
+.contact-section { background: #f1ecdf; }
+.contact-form { background: #fffdfa; }
+.contact-form input:focus, .contact-form select:focus,
+.contact-form textarea:focus { border-color: var(--gold-deep); box-shadow: 0 0 0 3px #e9ddb9; }
+.contact-form .form-status { color: var(--gold-deep); }
+.related-links { display: flex; flex-wrap: wrap; gap: 12px; padding: 24px 0 56px; }
+.related-links a { display: inline-block; padding: 12px 18px; border: 1px solid var(--gold-deep); border-radius: 999px; color: var(--ink); text-decoration: none; }
+.related-links a:hover { background: #efe6d0; }
+
+@media (max-width: 760px) {
+  .site-header { height: 86px; }
+  .header-inner { gap: 8px; }
+  .brand img { width: 116px; max-height: 66px; }
+  .main-nav { top: 86px; background: #fffdfa; }
+  .header-cta { padding: 11px 13px; }
+}
+
+@media (max-width: 430px) {
+  .brand img { width: 106px; }
+  .header-cta { font-size: 10px; padding: 10px 11px; }
+}
