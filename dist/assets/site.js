@@ -167,8 +167,8 @@ const WHATSAPP_NUMBER = '5544999469402';
   const track = document.querySelector('.ticker-track');
   const group = track && track.querySelector('.ticker-group');
   if (!group) return;
-  const SPEED_DESKTOP = 40; // px por segundo
-  const SPEED_MOBILE = 26;  // px por segundo
+  const SPEED_DESKTOP = 30; // px por segundo
+  const SPEED_MOBILE = 14;  // px por segundo
   const apply = () => {
     const width = group.getBoundingClientRect().width;
     if (!width) return;
@@ -178,4 +178,7 @@ const WHATSAPP_NUMBER = '5544999469402';
   apply();
   window.addEventListener('resize', apply);
   window.addEventListener('load', apply);
+  // Recalcula quando as fontes terminam de carregar (a largura muda).
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(apply);
+  if (window.ResizeObserver) new ResizeObserver(apply).observe(group);
 })();
