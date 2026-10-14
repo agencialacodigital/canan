@@ -43,12 +43,12 @@ html, body { font-variant-emoji: text; }
 
 /* Faixa de linhas em movimento */
 .ticker-marquee { overflow: hidden; }
-.ticker-track { display: flex; width: max-content; animation: ticker-scroll 38s linear infinite; color: #6e675e; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; white-space: nowrap; }
+.ticker-track { display: flex; width: max-content; animation: ticker-scroll 60s linear infinite; color: #6e675e; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; white-space: nowrap; }
 @media (hover: hover) { .ticker-track:hover { animation-play-state: paused; } }
 .ticker-group { display: flex; align-items: center; gap: 36px; padding: 21px 36px 21px 0; flex: none; }
 .ticker-group b { color: var(--gold); font-weight: 400; }
 @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (max-width: 760px) { .ticker-track { font-size: 10px; animation-duration: 30s; } .ticker-group { gap: 22px; padding: 17px 22px 17px 0; } }
+@media (max-width: 760px) { .ticker-track { font-size: 10px; animation-duration: 75s; } .ticker-group { gap: 22px; padding: 17px 22px 17px 0; } }
 
 /* Ícones (setas e asterisco) desenhados em SVG: iguais em todos os aparelhos */
 .ic { width: 1em; height: 1em; display: inline-block; vertical-align: -.14em; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex: none; }

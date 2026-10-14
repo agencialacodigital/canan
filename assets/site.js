@@ -159,3 +159,23 @@ const WHATSAPP_NUMBER = '5544999469402';
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
   start();
 })();
+
+// ---- Velocidade da faixa de linhas ----
+// A duração é calculada pela largura real do conteúdo, para manter a mesma
+// velocidade (px/s) em qualquer tela. Valores menores = mais devagar.
+(function () {
+  const track = document.querySelector('.ticker-track');
+  const group = track && track.querySelector('.ticker-group');
+  if (!group) return;
+  const SPEED_DESKTOP = 40; // px por segundo
+  const SPEED_MOBILE = 26;  // px por segundo
+  const apply = () => {
+    const width = group.getBoundingClientRect().width;
+    if (!width) return;
+    const speed = window.innerWidth <= 760 ? SPEED_MOBILE : SPEED_DESKTOP;
+    track.style.animationDuration = Math.round(width / speed) + 's';
+  };
+  apply();
+  window.addEventListener('resize', apply);
+  window.addEventListener('load', apply);
+})();
