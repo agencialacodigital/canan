@@ -63,7 +63,7 @@ if (form) {
 // ---- Botão flutuante do WhatsApp ----
 // Informe o número oficial (com DDI e DDD, só dígitos), ex.: '5544999999999'.
 // Enquanto estiver vazio, o botão leva à página de contato.
-const WHATSAPP_NUMBER = '';
+const WHATSAPP_NUMBER = '5544999469402';
 (function () {
   const scriptSrc = document.currentScript && document.currentScript.src;
   const root = scriptSrc ? new URL('../', scriptSrc) : new URL('./', location.href);
@@ -96,7 +96,7 @@ const WHATSAPP_NUMBER = '';
   widget.innerHTML =
     '<div class="wa-bubble" role="dialog" aria-label="Convite para atendimento" hidden>' +
       '<button class="wa-close" type="button" aria-label="Fechar mensagem">&times;</button>' +
-      '<strong>Olá! 👋</strong>' +
+      '<strong>Olá!</strong>' +
       '<p>Que tal solicitar um orçamento agora, sem compromisso? Conte o que você procura e a equipe da Canan ajuda você.</p>' +
       '<a class="wa-go" href="#">Solicitar orçamento</a>' +
     '</div>' +

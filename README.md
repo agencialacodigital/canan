@@ -21,7 +21,7 @@ Abra `http://localhost:8080/`. No Windows também funciona `serve.ps1`.
 
 ## Configurações rápidas
 
-- **WhatsApp:** preencha `WHATSAPP_NUMBER` no início do bloco "Botão flutuante do WhatsApp" em `assets/site.js` (e em `dist/assets/site.js`), com DDI e DDD, só dígitos (ex.: `5544999999999`). Enquanto estiver vazio, o botão leva à página de Contato.
+- **WhatsApp:** número configurado em `WHATSAPP_NUMBER` (início do bloco "Botão flutuante do WhatsApp" em `assets/site.js` e `dist/assets/site.js`): (44) 99946-9402. Para trocar, use DDI e DDD, só dígitos (ex.: `5544999469402`).
 - **Endereço:** R. Santos Dumont, 129 - loja A - Zona 01, Maringá - PR, 87050-100 (rodapé, Contato e dados estruturados).
 - **Carrossel da home:** imagens `dist/assets/hero-sala.jpg` e `hero-persianas.jpg`, intervalo de 5 s em `assets/site.js`.
 
@@ -37,7 +37,7 @@ Abra `http://localhost:8080/`. No Windows também funciona `serve.ps1`.
 
 ## Antes de publicar
 
-- Confirmar telefone, e-mail, WhatsApp, horário e condições de atendimento. O número de WhatsApp e o horário aguardam dados oficiais.
+- Confirmar telefone, e-mail, WhatsApp, horário e condições de atendimento. O horário de atendimento aguarda dados oficiais.
 - Substituir o formulário por um endpoint real quando o backend for definido e publicar uma Política de Privacidade correspondente.
 - Conferir se o domínio cananhomedecor.com.br será o destino final e mapear redirecionamentos das URLs antigas.
 - Configurar redirecionamento permanente de HTTP e `www` para a versão canônica escolhida e cadastrar o sitemap no Google Search Console, conforme a hospedagem.
