@@ -136,7 +136,8 @@ const WHATSAPP_NUMBER = '5544999469402';
   const slides = Array.from(root.querySelectorAll('.hero-slide'));
   const dots = Array.from(root.querySelectorAll('.hero-dots button'));
   if (slides.length < 2) return;
-  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Rotação automática sempre ativa (pedido do cliente); em aparelhos sem mouse não há pausa por hover.
+  const canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
   const INTERVAL = 5000;
   let current = 0;
   let timer = null;
@@ -148,11 +149,13 @@ const WHATSAPP_NUMBER = '5544999469402';
       if (i === current) dot.setAttribute('aria-current', 'true'); else dot.removeAttribute('aria-current');
     });
   };
-  const start = () => { if (!reduceMotion && !timer) timer = setInterval(() => show(current + 1), INTERVAL); };
+  const start = () => { if (!timer) timer = setInterval(() => show(current + 1), INTERVAL); };
   const stop = () => { clearInterval(timer); timer = null; };
   dots.forEach((dot, i) => dot.addEventListener('click', () => { show(i); stop(); start(); }));
-  root.addEventListener('mouseenter', stop);
-  root.addEventListener('mouseleave', start);
+  if (canHover) {
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', start);
+  }
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
   start();
 })();
