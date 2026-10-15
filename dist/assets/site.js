@@ -41,22 +41,28 @@ if (form) {
     'cama-banho-estar': 'Ainda quero conhecer as opções'
   };
   if (interest && map[interest]) form.elements.produto.value = map[interest];
-  form.addEventListener('submit', event => {
+  const ENDPOINT = 'https://thxokzwrvbcnsfaxfxzq.supabase.co/functions/v1/contato';
+  const status = form.querySelector('.form-status');
+  const button = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     if (!form.reportValidity()) return;
-    const data = new FormData(form);
-    const fields = [
-      `Nome: ${data.get('nome')}`,
-      `Telefone: ${data.get('telefone')}`,
-      `E-mail: ${data.get('email') || 'não informado'}`,
-      `Produto: ${data.get('produto')}`,
-      '',
-      String(data.get('mensagem')).trim()
-    ];
-    const subject = `Contato pelo site Canan — ${data.get('produto')}`;
-    const url = `mailto:contato@cananhomedecor.com.br?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(fields.join('\n'))}`;
-    form.querySelector('.form-status').textContent = 'Abrindo seu aplicativo de e-mail. Revise e envie a mensagem por lá.';
-    location.href = url;
+    button.disabled = true;
+    status.textContent = 'Enviando sua mensagem...';
+    try {
+      const response = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      if (!response.ok) throw new Error('send_failed');
+      form.reset();
+      status.textContent = 'Mensagem enviada! Em breve a equipe da Canan entrará em contato.';
+    } catch (error) {
+      status.textContent = 'Não foi possível enviar agora. Tente novamente ou ligue para (44) 3253-3772.';
+    } finally {
+      button.disabled = false;
+    }
   });
 }
 

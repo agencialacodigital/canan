@@ -1,0 +1,3 @@
+# Formulário público do site: a função não exige JWT do Supabase.
+[functions.contato]
+verify_jwt = false
