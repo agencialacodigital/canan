@@ -41,6 +41,23 @@ if (form) {
     'cama-banho-estar': 'Ainda quero conhecer as opções'
   };
   if (interest && map[interest]) form.elements.produto.value = map[interest];
+  // Máscara do telefone: (44) 3253-3772 ou (44) 99946-9402
+  const phone = form.elements.telefone;
+  const maskPhone = value => {
+    let d = value.replace(/\D/g, '');
+    if (d.length > 11 && d.startsWith('55')) d = d.slice(2);
+    d = d.slice(0, 11);
+    if (d.length <= 2) return d ? `(${d}` : '';
+    if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+    if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+    return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+  };
+  phone.maxLength = 15;
+  phone.addEventListener('input', () => {
+    phone.value = maskPhone(phone.value);
+    phone.setCustomValidity(phone.value.replace(/\D/g, '').length >= 10 ? '' : 'Informe o telefone com DDD.');
+  });
+
   const ENDPOINT = 'https://thxokzwrvbcnsfaxfxzq.supabase.co/functions/v1/contato';
   const status = form.querySelector('.form-status');
   const button = form.querySelector('button[type="submit"]');
