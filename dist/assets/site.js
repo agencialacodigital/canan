@@ -73,6 +73,8 @@ if (form) {
         body: JSON.stringify(Object.fromEntries(new FormData(form)))
       });
       if (!response.ok) throw new Error('send_failed');
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'generate_lead', lead_source: 'formulario_contato', produto_interesse: form.elements.produto ? form.elements.produto.value : '' });
       form.reset();
       status.textContent = 'Mensagem enviada! Em breve a equipe da Canan entrará em contato.';
     } catch (error) {
@@ -204,4 +206,22 @@ const WHATSAPP_NUMBER = '5544999469402';
   // Recalcula quando as fontes terminam de carregar (a largura muda).
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(apply);
   if (window.ResizeObserver) new ResizeObserver(apply).observe(group);
+})();
+
+// ---- Rastreamento de conversões (Google Tag Manager / dataLayer) ----
+// Eventos enviados ao dataLayer: generate_lead (formulário, ver acima),
+// whatsapp_click (links wa.me e botão flutuante) e phone_click (links tel:).
+(function () {
+  window.dataLayer = window.dataLayer || [];
+  document.addEventListener('click', event => {
+    const link = event.target.closest && event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href') || '';
+    const page = location.pathname;
+    if (/^https?:\/\/(wa\.me|api\.whatsapp\.com)\//i.test(href)) {
+      window.dataLayer.push({ event: 'whatsapp_click', link_url: href, page_path: page });
+    } else if (/^tel:/i.test(href)) {
+      window.dataLayer.push({ event: 'phone_click', link_url: href, page_path: page });
+    }
+  }, true);
 })();
