@@ -1,0 +1,32 @@
+# Mantém o projeto Supabase (formulário de contato) ativo.
+# Projetos do plano gratuito são pausados após 7 dias sem uso; este ping roda segunda e quinta.
+# Usa só a chave pública (publishable), que já é exposta por design e não lê dados:
+# a tabela leads continua bloqueada para ela, o banco só recusa a leitura.
+name: Supabase keep-alive
+
+on:
+  schedule:
+    - cron: '17 12 * * 1,4'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    env:
+      SUPABASE_URL: https://thxokzwrvbcnsfaxfxzq.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_fY_6LxxwuOgRLzwIgg5H6w_gfqCykk5
+    steps:
+      - name: Ping na API e no banco
+        run: |
+          set -u
+          fail=0
+          for path in "/rest/v1/" "/rest/v1/leads?select=id&limit=1"; do
+            code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 30 \
+              -H "apikey: $SUPABASE_PUBLISHABLE_KEY" "$SUPABASE_URL$path")
+            echo "GET $path -> $code"
+            # 401/403 é esperado (RLS); 000 ou 5xx indica projeto pausado ou fora do ar.
+            if [ "$code" = "000" ] || [ "$code" -ge 500 ]; then fail=1; fi
+          done
+          exit $fail
