@@ -49,3 +49,11 @@ Abra `http://localhost:8080/`. No Windows também funciona `serve.ps1`.
 Modo: ferramenta integrada `image_gen`. Arquivos finais: `assets/hero.jpg`, `assets/curtains.jpg`, `assets/rugs.jpg`, `assets/bedroom.jpg`, `assets/blinds.jpg`, `assets/bath.jpg` e `assets/wallpaper.jpg`. Foram comprimidos como JPEG de qualidade 84–85 para a versão pública.
 
 Prompts resumidos: (1) interior editorial amplo com três arcos, tecidos, sofá, tapete e céu azul; (2) cortinas claras em sala com cadeira bouclé; (3) sala com tapete orgânico e móveis escultóricos; (4) quarto com roupa de cama em camadas e papel de parede sutil; (5) persianas horizontais de madeira em uma sala; (6) toalhas em banheiro; (7) parede com papel botânico discreto. Todos pediram fotografia realista, luz natural e ausência de pessoas, textos e logotipos.
+
+
+## Rastreamento
+
+- Google Tag Manager: GTM-MXBBF674 (snippet no head e noscript no body de todas as paginas de dist/).
+- - Eventos enviados ao dataLayer pelo assets/site.js: generate_lead (formulario de contato enviado), whatsapp_click (links wa.me) e phone_click (links tel:).
+  - - As conversoes do Google Ads (formulario, WhatsApp e telefone) sao disparadas por esses eventos dentro do container do GTM.
+    - 
